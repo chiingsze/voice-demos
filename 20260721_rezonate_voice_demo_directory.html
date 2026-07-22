@@ -153,6 +153,40 @@ details.prompt pre {
 .no-prompt { color: #8a8280; font-size: 13.5px; font-style: italic; margin: 0; }
 .no-results { display: none; color: var(--red-orange); font-weight: 600; margin: 18px 0; }
 footer { margin-top: 44px; font-size: 12.5px; color: #8a8280; }
+
+.section-intro { max-width: 860px; margin: 0 0 16px; color: #575050; }
+.section-note {
+  background: var(--cool-gray); border-left: 4px solid var(--dark-lavender);
+  padding: 14px 16px; border-radius: 8px; margin: 14px 0 22px; font-size: 14px;
+}
+.section-note strong { font-family: var(--heading-font); }
+.section-note code {
+  background: #fff; padding: 1px 6px; border-radius: 4px;
+  font-size: 12.5px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  color: var(--red-orange);
+}
+.numcell { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.numsub { display: block; font-weight: 400; font-size: 12px; color: #8a8280; }
+.chan { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-chan {
+  font-family: var(--heading-font); font-size: 11.5px; font-weight: 700;
+  padding: 2px 9px; border-radius: 6px; letter-spacing: 0.02em;
+  background: #f0ebfb; color: var(--off-black); border: 1px solid var(--lavender);
+}
+.chip-chan.off { background: #fff; color: #b4aca6; border-color: #e6e0da; }
+.status {
+  font-family: var(--heading-font); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px; display: inline-block; white-space: nowrap;
+}
+.status-assigned { background: var(--dark-lavender); color: #fff; }
+.status-pool { background: var(--orange-yellow); color: var(--off-black); }
+.status-infra { background: var(--cool-gray); color: #6b6363; }
+.status-verify { background: var(--red-orange); color: #fff; }
+.jobnote { display: block; font-size: 12.5px; color: #6b6363; margin-top: 4px; }
+.qflag { color: var(--fire-red); font-weight: 700; cursor: help; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0 4px; font-size: 12.5px; color: #6b6363; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
 @media (max-width: 640px) {
   .hero { padding: 32px 18px 28px; }
   .wrap { padding: 20px 16px 48px; }
@@ -4677,6 +4711,60 @@ Also: offer to text a useful link (the app, a team&#x27;s ticket page, a League 
  ]
 }</pre></details></article>
 <article class="card" id="card-uc1b-adaptive-counselling" data-search="uc1-b: adaptive patient-guided counselling ai pharmacist healthcare outbound singapore aivah spiral 1 / synapxe uc1 post-discharge medication counselling demo (adaptive flow), where an ai pharmacist counsels a newly discharged patient on new and continuing medications, handling interruptions, teach-back, and safety questions. medication counselling teach-back checks interruption handling safety questions"><h3>UC1-B: Adaptive Patient-Guided Counselling</h3><div class="chips"><span class="chip chip-persona">AI pharmacist</span><span class="chip chip-vertical">Healthcare</span><span class="chip chip-direction">Outbound</span><span class="chip chip-country">Singapore</span></div><p class="desc">AIVAH Spiral 1 / Synapxe UC1 post-discharge medication counselling demo (adaptive flow), where an AI pharmacist counsels a newly discharged patient on new and continuing medications, handling interruptions, teach-back, and safety questions.</p><div class="ucrow"><span class="lbl">Use cases</span><span class="uc">Medication counselling</span><span class="uc">Teach-back checks</span><span class="uc">Interruption handling</span><span class="uc">Safety questions</span></div><div class="testrow"><span class="lbl">Test it</span><a class="btn btn-primary" href="https://demo.keyreply.com/voice-demo/cb7959aec1c94ddaaafa6df040a38a26" target="_blank" rel="noopener">Test it (Edge)</a></div><p class="no-prompt">Full prompt maintained on the Edge platform (no local file)</p></article>
+  </div>
+
+  <h2>Channels &amp; <span class="accent">numbers</span></h2>
+  <p class="section-intro">As demos move from in-browser test links to real connected channels &mdash; triggering an actual phone call to a prospect, or sending an SMS / WhatsApp confirmation after the call &mdash; every number we hold needs an explicit job. This registry maps each number to what it does today.</p>
+  <div class="section-note">
+    <strong>How to read this:</strong> in Telnyx, the connection name (e.g. &ldquo;Kira Staging&rdquo;) is only the SIP connection / environment, <em>not</em> the demo assignment. The real number&nbsp;&rarr;&nbsp;tenant&nbsp;&rarr;&nbsp;agent binding lives in Kira&rsquo;s <code>phone_numbers</code> table and is set with <code>kira demo assign</code> / viewed with <code>kira demo list</code>. Rows marked <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span> are inferred from the Telnyx export and should be confirmed against <code>kira demo list</code>.
+  </div>
+
+  <div class="legend">
+    <span><span class="status status-assigned">Assigned</span> tied to a named prospect / demo</span>
+    <span><span class="status status-pool">Available</span> free to attach to a demo</span>
+    <span><span class="status status-infra">Infra / test</span> platform or QA use, not prospect-facing</span>
+    <span><span class="status status-verify">Verify</span> check before reusing</span>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Number</th><th>Provider &amp; region</th><th>Channels</th><th>Status</th><th>Job / assignment</th><th>Telnyx environment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="numcell">+65 6034 9299</td><td>Telnyx &middot; SG</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-assigned">Assigned</span></td><td><strong>IFS Capital</strong> demo<span class="jobnote">Confirmed by owner; connection name matches.</span></td><td>IFS CAPITAL 01</td></tr>
+        <tr><td class="numcell">+65 6034 9220</td><td>Telnyx &middot; SG</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-pool">Available</span></td><td>Soft phone, free to attach<span class="jobnote">Confirmed by owner: used as a soft phone, not tied to a demo.</span></td><td>Funnel Cycle</td></tr>
+        <tr><td class="numcell">+65 3106 3033</td><td>Telnyx &middot; SG</td><td><div class="chan"><span class="chip-chan">Voice</span><span class="chip-chan">SIP</span></div></td><td><span class="status status-verify">Verify</span></td><td>Internal LiveKit assessment line <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span><span class="jobnote">Routes to livekit.cloud SIP; check it is not in active use before reusing.</span></td><td>livekit-assessment</td></tr>
+        <tr><td class="numcell">+1 816 263 3080</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span><span class="chip-chan">WhatsApp</span></div></td><td><span class="status status-pool">Available</span></td><td>Shared demo pool <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span><span class="jobnote">The DEMO-TELEPHONY-SPEC uses this exact number as its <code>kira demo assign</code> example.</span></td><td>Kira Staging &middot; WhatsApp Verification</td></tr>
+        <tr><td class="numcell">+1 650 942 0066</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span><span class="chip-chan">WhatsApp</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>IFS US smoke-test target (<code>phone_to</code>) <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span><span class="jobnote">Appears in the IFS QA experiment manifest as an automated test target.</span></td><td>Kira Staging &middot; Kriz WA Testing</td></tr>
+        <tr><td class="numcell">+1 816 263 3360</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>Kira staging test <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span></td><td>Kira Staging</td></tr>
+        <tr><td class="numcell">+1 646 517 0705</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>Kira staging test <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span></td><td>Kira Staging</td></tr>
+        <tr><td class="numcell">+1 650 459 9330</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>IFS US smoke-test source (<code>phone_from</code>) <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span><span class="jobnote">Appears in the IFS QA experiment manifest as an automated test source.</span></td><td>Kira Production</td></tr>
+        <tr><td class="numcell">+1 816 776 0418</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span><span class="chip-chan">WhatsApp</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>Production WhatsApp sender verification <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span></td><td>Kira Production &middot; WhatsApp Verification</td></tr>
+        <tr><td class="numcell">+1 628 202 3431</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>DTMF / IVR test <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span></td><td>DTMF Test IVR</td></tr>
+        <tr><td class="numcell">+1 646 981 6007</td><td>Telnyx &middot; US</td><td><div class="chan"><span class="chip-chan">Voice</span><span class="chip-chan">SIP</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>LiveKit inbound <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span><span class="jobnote">Routes to livekit.cloud SIP.</span></td><td>telnyx-livekit LiveKit inbound</td></tr>
+        <tr><td class="numcell">+55 21 2038 3980</td><td>Telnyx &middot; BR</td><td><div class="chan"><span class="chip-chan">Voice</span></div></td><td><span class="status status-infra">Infra / test</span></td><td>Brazil trunk <span class="qflag" title="Inferred from the Telnyx export; confirm against kira demo list">&#63;</span></td><td>Brazil Trunk</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="border-top-color: var(--orange-yellow);">
+    <h3>Singtel SIP trunk &middot; <span style="font-family:var(--body-font);font-weight:400;font-size:15px;color:#6b6363;">subscription sip23936628</span></h3>
+    <div class="chips">
+      <span class="chip chip-country">Singtel SIP</span>
+      <span class="chip chip-vertical">10 SG DIDs</span>
+      <span class="chip chip-direction">Inbound (SIP)</span>
+      <span class="chip chip-vertical">CA cert available</span>
+    </div>
+    <p class="desc">A block of 10 Singapore numbers on the SIP trunk Max shared. Trunk currently shows <strong>0 members</strong>, so none of these are routed to anything yet &mdash; they are idle, available inbound lines. Because they are SIP, they can be pointed at Kira the same way the LiveKit SIP numbers are, which makes them a good fit for giving each SG prospect demo its own dedicated call-in number.</p>
+    <div class="ucrow">
+      <span class="lbl">Available</span>
+      <span class="uc">+65 6874 3770</span><span class="uc">+65 6874 3771</span><span class="uc">+65 6874 3772</span><span class="uc">+65 6874 3773</span><span class="uc">+65 6874 3774</span><span class="uc">+65 6874 3775</span><span class="uc">+65 6874 3776</span><span class="uc">+65 6874 3777</span><span class="uc">+65 6874 3778</span><span class="uc">+65 6874 3779</span>
+    </div>
+  </div>
+
+  <div class="section-note">
+    <strong>Keeping this accurate:</strong> reconcile once against <code>kira demo list</code> (Telnyx pool) and the Singtel trunk, then update a row whenever you run <code>kira demo assign --number &hellip; --tenant &hellip; --agent &hellip;</code>. For an SMS / WhatsApp confirmation after a call, the sending number must be registered to a WhatsApp Business Account &mdash; the Telnyx &ldquo;WhatsApp Verification&rdquo; profiles above are that registration step, not prospect-facing lines.
   </div>
 
   <footer>Rezonate (formally KeyReply) &middot; getrezonate.com &middot; Maintained by Jasmine. Ask Claude to regenerate and republish this page when a demo changes.</footer>
